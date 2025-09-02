@@ -4,6 +4,8 @@ import configPromise from "@payload-config";
 import { SearchFilters } from "@/modules/home/ui/components/search-filters";
 import { Navbar } from "@/modules/home/ui/components/navbar";
 import { Footer } from "@/modules/home/ui/components/footer";
+import { CustomCategory } from "@/modules/home/types";
+import { Category } from "@/payload-types";
 
 interface Props {
   children: React.ReactNode;
@@ -25,12 +27,13 @@ const Layout = async ({ children }: Props) => {
     },
   });
 
-  const formattedData = data.docs.map((doc) => ({
+  const formattedData: CustomCategory[] = data.docs.map((doc) => ({
     ...doc,
-    subcategories: doc.subcategories?.docs ?? [],
+    subcategories: (doc.subcategories?.docs ?? []).map((doc) => ({
+      ...(doc as Category),
+      subcategories: undefined,
+    })),
   }));
-
-  console.log({ data, formattedData });
 
   return (
     <div className="flex flex-col min-h-screen">
