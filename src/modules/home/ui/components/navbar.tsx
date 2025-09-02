@@ -4,14 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
+import { MenuIcon } from "lucide-react";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import Logo from "../../../../../public/logo.svg";
 import { navbarItems } from "../constants";
-import { MenuIcon } from "lucide-react";
-import { useState } from "react";
 import { NavbarSidebar } from "./navbar-sidebar";
 
 const poppins = Poppins({

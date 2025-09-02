@@ -1,8 +1,10 @@
-import { Category } from "@/payload-types";
 import Link from "next/link";
 
+import { Category } from "@/payload-types";
+import { CustomCategory } from "@/modules/home/types";
+
 interface Props {
-  category: any;
+  category: CustomCategory;
   isOpen: boolean;
   position: { top: number; left: number };
 }
@@ -19,12 +21,10 @@ export const SubcategoryMenu = ({ category, isOpen, position }: Props) => {
   const backgroundColor = category.color || "#F5F5F5";
   return (
     <div
-      className="absolute z-[100]"
+      className="fixed z-[100]"
       style={{
-        top: "calc(100% + 8px)", // Position below the button with 8px gap
-        left: "50%",
-        transform: "translateX(-50%)", // Center horizontally
-        minWidth: "200px",
+        top: position.top, // Position below the button with 8px gap
+        left: position.left,
       }}
     >
       {/* Invisible bridge to maintain hover */}
@@ -37,7 +37,7 @@ export const SubcategoryMenu = ({ category, isOpen, position }: Props) => {
           {category.subcategories?.map((subcategory: Category) => (
             <Link
               key={subcategory.slug}
-              href="/"
+              href={`/${category.slug}/${subcategory.slug}`}
               className="w-full text-left p-4 hover:bg-black hover:text-white flex justify-between items-center font-medium"
             >
               {subcategory.name}
