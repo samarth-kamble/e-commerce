@@ -49,7 +49,7 @@ export const Navbar = () => {
       <Link href="/" className="pl-6 flex items-center">
         <Image src={Logo} alt="Logo" width={30} height={30} className="mr-2" />
         <span className={cn("text-4xl font-semibold", poppins.className)}>
-          Cavierra
+          Luxora
         </span>
       </Link>
 

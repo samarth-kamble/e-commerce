@@ -1,15 +1,14 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
-import { ListFilterIcon } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { CustomCategory } from "@/modules/home/types";
 import { CategoryDropdown } from "./category-dropdown";
+import { useRef, useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ListFilterIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { CategoriesSidebar } from "./categories-sidebar";
+import { CategoriesGetManyOutput } from "@/modules/categories/types";
 
 interface Props {
-  data: CustomCategory[];
+  data: CategoriesGetManyOutput;
 }
 
 export const Categories = ({ data }: Props) => {
@@ -64,17 +63,12 @@ export const Categories = ({ data }: Props) => {
   return (
     <div className="relative w-full">
       {/* Categories sidebar */}
-      <CategoriesSidebar
-        open={isSidebarOpen}
-        onOpenChange={setIsSidebarOpen}
-        data={data}
-      />
+      <CategoriesSidebar open={isSidebarOpen} onOpenChange={setIsSidebarOpen} />
       <div
         ref={measureRef}
         className="absolute opacity-0 pointer-events-none flex"
         style={{ position: "fixed", top: -9999, left: -9999 }}
       >
-        {/* TODO: Hardcode "All" button */}
         {data.map((category) => (
           <div key={category.id}>
             <CategoryDropdown
@@ -103,7 +97,6 @@ export const Categories = ({ data }: Props) => {
         ))}
         <div ref={viewAllRef} className="shrink-0">
           <Button
-            variant="elevated"
             className={cn(
               "h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-white hover:border-primary text-black",
               isActiveCategoryHidden &&
