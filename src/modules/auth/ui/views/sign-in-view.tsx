@@ -14,7 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import z from "zod";
+import { z } from "zod";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -85,7 +85,7 @@ export const SignInView = () => {
                 </Link>
               </Button>
             </div>
-            <h1 className="text-4xl font-medium">Welcome back to Lexi.</h1>
+            <h1 className="text-4xl font-medium">Welcome back to Luxora.</h1>
             <FormField
               name="email"
               render={({ field }) => (

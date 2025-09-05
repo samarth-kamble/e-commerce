@@ -93,7 +93,7 @@ export const SignUpView = () => {
               </Button>
             </div>
             <h1 className="text-4xl font-medium">
-              Join over 1,500 creators earnings money on Luxora.
+              Join over 1,500 creators earning money on Luxora.
             </h1>
             <FormField
               name="username"
