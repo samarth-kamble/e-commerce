@@ -1,7 +1,14 @@
 "use client";
 
+import { z } from "zod";
+import { Poppins } from "next/font/google";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import type { TRPCClientErrorLike } from "@trpc/client";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,14 +21,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { z } from "zod";
-import Link from "next/link";
-import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { useTRPC } from "@/trpc/client";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { loginSchema } from "../../utils/schema";
 
 const poppins = Poppins({
@@ -31,14 +32,18 @@ const poppins = Poppins({
 
 export const SignInView = () => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const trpc = useTRPC();
+
   const { mutate: login, isPending } = useMutation(
     trpc.auth.login.mutationOptions({
-      onError: (error) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onError: (error: TRPCClientErrorLike<any>) => {
         toast.error(error.message);
       },
-      onSuccess: () => {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(trpc.auth.session.queryFilter());
         toast.success("Logged in successfully!");
         router.push("/");
       },

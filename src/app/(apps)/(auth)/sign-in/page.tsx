@@ -1,7 +1,15 @@
-import { SignInView } from "@/modules/auth/ui/views/sign-in-view";
 import React from "react";
+import { redirect } from "next/navigation";
 
-const Page = () => {
+import { SignInView } from "@/modules/auth/ui/views/sign-in-view";
+import { caller } from "@/trpc/server";
+
+const Page = async () => {
+  const session = await caller.auth.session();
+  if (session.user) {
+    redirect("/");
+  }
+
   return <SignInView />;
 };
 
