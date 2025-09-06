@@ -5,3 +5,5 @@ export const navbarItems = [
   { href: "/pricing", children: "Pricing" },
   { href: "/contact", children: "Contact" },
 ];
+
+export const DEFAULT_BG_COLOR = "#F5F5F5";
