@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { SearchFilters } from "@/modules/home/ui/components/search-filters";
 import { Navbar } from "@/modules/home/ui/components/navbar";
 import { Footer } from "@/modules/home/ui/components/footer";
-import { SearchFiltersSkeleton } from "@/modules/loader/ui/SearchFiltersSkeleton";
+import { SearchFiltersSkeleton } from "@/modules/loader/search-filter-skeleton";
 
 interface Props {
   children: React.ReactNode;
