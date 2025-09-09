@@ -32,17 +32,11 @@ export const productsRouter = createTRPCRouter({
         };
       }
 
-      if (input.maxPrice) {
-        where.price = {
-          less_than_equal: input.maxPrice,
-        };
-      }
-
       if (input.category) {
         const categoriesData = await ctx.db.find({
           collection: "categories",
           limit: 1,
-          depth: 1, // Populate subcategories, subcategories[0] will be a type of "Category"
+          depth: 1,
           pagination: false,
           where: {
             slug: {
