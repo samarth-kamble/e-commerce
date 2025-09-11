@@ -42,7 +42,13 @@ export const ProductFilters = () => {
     <div className="border rounded-md bg-white">
       <div className="p-4 border-b flex items-center justify-between">
         <p className="font-medium">Filters</p>
-        <button className="underline" onClick={() => {}} type="button">
+        <button
+          className="underline"
+          onClick={() =>
+            setFilters({ q: null, minPrice: null, maxPrice: null })
+          }
+          type="button"
+        >
           Clear
         </button>
       </div>
