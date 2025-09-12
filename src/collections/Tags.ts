@@ -13,7 +13,7 @@ export const Tags: CollectionConfig = {
       unique: true,
     },
     {
-      name: "books",
+      name: "products",
       type: "relationship",
       relationTo: "products",
       hasMany: true,
