@@ -2,7 +2,6 @@
 
 import { Input } from "@/components/ui/input";
 import { BookmarkCheckIcon, ListFilterIcon, SearchIcon } from "lucide-react";
-import { CategoriesGetManyOutput } from "@/modules/categories/types";
 import { CategoriesSidebar } from "./categories-sidebar";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -12,10 +11,9 @@ import Link from "next/link";
 
 interface Props {
   disabled?: boolean;
-  data: CategoriesGetManyOutput;
 }
 
-export const SearchInput = ({ disabled, data }: Props) => {
+export const SearchInput = ({ disabled }: Props) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const trpc = useTRPC();

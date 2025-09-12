@@ -211,7 +211,7 @@ export interface Product {
 export interface Tag {
   id: string;
   name: string;
-  books?: (string | Product)[] | null;
+  products?: (string | Product)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -359,7 +359,7 @@ export interface ProductsSelect<T extends boolean = true> {
  */
 export interface TagsSelect<T extends boolean = true> {
   name?: T;
-  books?: T;
+  products?: T;
   updatedAt?: T;
   createdAt?: T;
 }

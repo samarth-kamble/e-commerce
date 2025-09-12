@@ -8,7 +8,7 @@ export const SearchFiltersSkeleton = () => {
         backgroundColor: "#F5F5F5",
       }}
     >
-      <SearchInput disabled data={[]} />
+      <SearchInput disabled />
       <div className="hidden lg:block">
         <div className="h-11" />
       </div>

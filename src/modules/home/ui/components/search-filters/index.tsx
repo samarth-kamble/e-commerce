@@ -36,7 +36,7 @@ export const SearchFilters = () => {
         backgroundColor: activeCategoryColor,
       }}
     >
-      <SearchInput data={data} />
+      <SearchInput disabled />
       <div className="hidden lg:block">
         <Categories data={data} />
       </div>
