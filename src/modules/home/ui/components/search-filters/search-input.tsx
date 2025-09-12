@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { useProductFilters } from "@/modules/products/hooks/use-product-filters";
 
 interface Props {
   disabled?: boolean;
@@ -21,7 +20,6 @@ export const SearchInput = ({ disabled, data }: Props) => {
 
   const trpc = useTRPC();
   const session = useQuery(trpc.auth.session.queryOptions());
-  const [filters, setFilters] = useProductFilters();
 
   return (
     <div className="flex items-center gap-2 w-full">
@@ -32,8 +30,6 @@ export const SearchInput = ({ disabled, data }: Props) => {
           className="pl-8"
           placeholder="Search books"
           disabled={disabled}
-          value={filters.q ?? ""}
-          onChange={(e) => setFilters({ q: e.target.value })}
         />
       </div>
       <Button
